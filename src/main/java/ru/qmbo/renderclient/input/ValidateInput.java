@@ -1,5 +1,6 @@
 package ru.qmbo.renderclient.input;
 
+import org.springframework.stereotype.Component;
 import ru.qmbo.renderclient.exception.MenuOutException;
 
 /**
@@ -8,6 +9,7 @@ import ru.qmbo.renderclient.exception.MenuOutException;
  * @version 0.1
  * @since 12.06.2018
  */
+@Component
 public class ValidateInput implements Input {
     /**
      * Input.
@@ -18,7 +20,7 @@ public class ValidateInput implements Input {
      * Constructor.
      * @param input input.
      */
-    public ValidateInput(Input input) {
+    public ValidateInput(ConsoleInput input) {
         this.input = input;
     }
 

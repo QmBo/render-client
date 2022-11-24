@@ -20,7 +20,7 @@ public class StartService {
     }
 
     public void init() {
-        MenuService menu = new MenuService(this.input, this.tracker);
+        MenuService menu = new MenuService((ValidateInput) this.input, this.tracker);
         int[] range = menu.getRange();
         while (true) {
             menu.show();

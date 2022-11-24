@@ -1,11 +1,16 @@
 package ru.qmbo.renderclient.service;
 
+import org.springframework.context.annotation.Bean;
+import org.springframework.stereotype.Service;
 import ru.qmbo.renderclient.actions.BaseAction;
 import ru.qmbo.renderclient.actions.UserAction;
+import ru.qmbo.renderclient.input.ConsoleInput;
 import ru.qmbo.renderclient.input.Input;
+import ru.qmbo.renderclient.input.ValidateInput;
 import ru.qmbo.renderclient.model.Stats;
 import ru.qmbo.renderclient.model.Task;
 
+import java.beans.BeanProperty;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
@@ -16,13 +21,14 @@ import java.util.List;
  * @version 0.1
  * @since 05.06.2018
  */
+@Service
 public class MenuService {
     private final RestTemplateService tracker;
     private final Input input;
     private final UserAction[] actions = new UserAction[5];
     private int position = 0;
 
-    public MenuService(Input input, RestTemplateService tracker) {
+    public MenuService(ValidateInput input, RestTemplateService tracker) {
         this.input = input;
         this.tracker = tracker;
         this.fillAction();
@@ -67,6 +73,11 @@ public class MenuService {
     private void showStats(Stats item) {
         System.out.printf("ID: %s, Status: %s, Time %s%s",
                 item.getId(), item.getStatus(), item.getDate(), System.lineSeparator());
+    }
+
+    public Task updateStatus(Task request) {
+        showItem(new Task().setId(request.getId()).setStatus(request.getStatus()));
+        return request;
     }
 
     private class CreateUser extends BaseAction {

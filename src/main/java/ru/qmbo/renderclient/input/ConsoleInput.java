@@ -1,5 +1,7 @@
 package ru.qmbo.renderclient.input;
 
+import org.springframework.stereotype.Component;
+
 import java.util.Scanner;
 /**
  * ConsoleInput class.
@@ -7,6 +9,7 @@ import java.util.Scanner;
  * @version 0.1
  * @since 03.06.2018
  */
+@Component
 public class ConsoleInput implements Input {
     /**
      * Console scanner.

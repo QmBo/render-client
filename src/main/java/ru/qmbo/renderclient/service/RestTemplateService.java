@@ -49,5 +49,9 @@ public class RestTemplateService {
          ResponseEntity<Stats[]> result = this.template.getForEntity(baseUrl, Stats[].class);
          return result.getBody();
     }
+
+    public String getToken() {
+        return this.token;
+    }
 }
 
